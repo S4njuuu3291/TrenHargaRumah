@@ -2,8 +2,10 @@ import streamlit as st
 import joblib
 import numpy as np
 import pandas as pd
+import os
 
-model = joblib.load(r'model\xgb_model_pipeline.pkl')
+model_path = os.path.join('model', 'xgb_model_pipeline.pkl')
+model = joblib.load(model_path)
 
 st.sidebar.title("Prediksi Harga Properti")
 st.sidebar.info(
