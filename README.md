@@ -2,7 +2,7 @@
 
 **End-to-End Data Science Project: Scraping, EDA, Modelling, Deployment**
 
-Dashboard Streamlit:
+Dashboard Streamlit: https://hargarumahmedan.streamlit.app/
 
 ## ![alt text](image.png)
 
