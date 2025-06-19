@@ -82,28 +82,28 @@ project-porto-properti/
 
 3. **Feature Engineering**:
 
+   - Menambah fitur baru yakni total_ruangan yang merupakan total dari jumlah kamar tidur, kamar mandi, dan garasi.
    - One-hot encoding lokasi & jenis properti.
    - Scaling numerik.
 
 4. **Modelling**:
 
-   - Model: Linear Regression, Random Forest, XGBoost.
+   - Model: Linear Regression, SVR, Random Forest, XGBoost.
    - Hyperparameter tuning XGBoost (Optuna).
    - Cross-validation (5-fold).
    - Evaluasi: MAE, RMSE, R2, analisis per kategori.
 
 5. **Interpretasi & Deployment**:
-   - Analisis feature importance.
    - Dashboard interaktif (Streamlit).
 
 ---
 
 ## Hasil Utama
 
-- **Model utama:** XGBoost (tuning Optuna)
-- **R2 test:** 0.776
-- **MAE:** ~Rp 704 juta (30.47% dari harga rata-rata)
-- **RMSE:** ~Rp 1.85 M (80% dari harga rata-rata)
+- **Model:** XGBoost,RandomForest,SVR (Stacking Regressor) (tuning Optuna)
+- **R2 test:** 0.6783
+- **MAE:** ~Rp 423 juta (26.52%% dari harga rata-rata)
+- **RMSE:** ~Rp 812.22 juta (50.86%% dari harga rata-rata)
 - **R2 per kategori:**
   - Apartemen: 0.93
   - Rumah: 0.79
@@ -116,14 +116,14 @@ project-porto-properti/
 ## Dashboard
 
 - Input: lokasi, tipe properti, kamar tidur/mandi, garasi, luas tanah/bangunan.
-- Output: Estimasi harga properti berdasarkan model XGBoost.
+- Output: Estimasi harga properti berdasarkan Stacking Regressor.
 - Friendly untuk non-teknis.
 
 ---
 
 ## Limitasi & Saran Pengembangan
 
-- Model belum memperhitungkan **alamat lengkap**, peta, umur bangunan, atau faktor lingkungan.
+- Performa model bisa ditingkatkan lagi karena masih menggunakan fitur generik sehingga belum terlalu bisa menangkap pola kompleks dimana model belum memperhitungkan **alamat lengkap**, langitude longitude, umur bangunan, atau faktor lingkungan.
 - Data diperoleh dari listing publik (bukan appraisal resmi).
 - Ke depan bisa tambahkan:
   - Fitur geospasial (jarak ke pusat kota, sekolah, fasilitas umum)

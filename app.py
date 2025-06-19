@@ -4,13 +4,13 @@ import numpy as np
 import pandas as pd
 import os
 
-model_path = os.path.join('model', 'xgb_model_pipeline.pkl')
+model_path = os.path.join('model', 'stacking_pipeline.pkl')
 model = joblib.load(model_path)
 
 st.sidebar.title("Prediksi Harga Properti")
 st.sidebar.info(
     "Input fitur properti lalu klik **Prediksi Harga**. "
-    "Model berbasis XGBoost yang telah dilatih dengan data scraping listing online."
+    "Model berbasis Stacking Classifier dengan XGBoost,RandomForest, dan SVR yang telah dilatih dengan data scraping listing online."
 )
 
 st.header("Input Fitur Properti")
@@ -65,7 +65,8 @@ if st.button("Prediksi Harga"):
         "jumlah_kamar_mandi": [jumlah_kamar_mandi],
         "garasi": [garasi],
         "luas_tanah": [luas_tanah],
-        "luas_bangunan": [luas_bangunan]
+        "luas_bangunan": [luas_bangunan],
+        "total_ruangan": [jumlah_kamar_tidur+jumlah_kamar_mandi+garasi]
     })
     pred_log = model.predict(input_df)[0]
     pred_price = np.expm1(pred_log)
